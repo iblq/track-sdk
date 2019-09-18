@@ -16,10 +16,14 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
-    "@babel/preset-stage-2": "^7.0.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
     "eslint": "^6.4.0",
     "eslint-loader": "^3.0.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.2",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9"
   }
