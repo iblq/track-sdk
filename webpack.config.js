@@ -7,7 +7,7 @@ var env = process.env.WEBPACK_ENV;
 
 module.exports = {
   mode: env,
-  entry: __dirname + "/src/index.js",
+  entry: __dirname + "/index.js",
   devtool: "source-map",
   output: {
     path: __dirname + "/lib",

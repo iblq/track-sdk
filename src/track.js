@@ -1,38 +1,17 @@
-const formatParams = (url, data) => {
-  let resUrl = `${url}?`;
+import request from "./request";
+import onLoad from "./onLoad";
 
-  Object.entries(data).forEach(([key, value]) => {
-    resUrl = `${resUrl}${key}=${encodeURIComponent(value)}&`;
-  });
-  return resUrl;
-};
+onLoad();
 
-const request = (url, data, callback) => {
-  const resUrl = formatParams(url, data);
-  console.log(document.cookie);
-  console.log('post track', resUrl);
-
-  // const ajax = new XMLHttpRequest();
-  // ajax.onreadystatechange = () => {
-  //   if (ajax.readyState === 4 && ajax.status === 200) {
-  //     // const msg = ajax.responseText;
-  //     callback();
-  //   }
-  // };
-  // ajax.open('get', resUrl);
-  // // ajax.setRequestHeader('content-type', 'application/json');
-  // xhr.withCredentials = true;
-
-  // ajax.send(JSON.stringify(data));
-};
-
-const URL = '/xxx/xxxs';
-
+/**
+ * @param {Object} config params
+ * @param {String} config.appId app key
+ * @param {String} config.userID solo key
+ 
+ * @param {Function} callback 
+ */
 const nuoTrack = (config = {}, callback) => {
-  // appId, userId
-  const { appId, userId } = config;
-
-  request(URL, { appId, userId }, callback);
+  request(config, callback);
 };
 
 export default nuoTrack;
