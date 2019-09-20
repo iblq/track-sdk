@@ -7,27 +7,32 @@ const formatParams = (url, data) => {
   return resUrl;
 };
 
-const URL = "/xxx/xxxs";
+const URL = "http://172.30.5.27:/xxx/xxxs";
 
 const request = (data = {}, callback = () => {}, timer = +new Date()) => {
-  const { userId, appId } = data;
-  const params = { userId: userId || timer, appId };
-  const resUrl = formatParams(data.url || URL, params);
-  console.log("post track", resUrl);
-  // return;
+  try {
+    const { userId, appId } = data;
+    const params = { userId: userId, appId };
+    const resUrl = formatParams(data.url || URL, params);
 
-  const ajax = new XMLHttpRequest();
-  ajax.onreadystatechange = () => {
-    if (ajax.readyState === 4 && ajax.status === 200) {
-      // const msg = ajax.responseText;
-      callback();
-    }
-  };
-  ajax.open("get", resUrl);
-  // ajax.setRequestHeader('content-type', 'application/json');
-  ajax.withCredentials = true;
+    console.log("post track", resUrl);
+    // return;
 
-  ajax.send(JSON.stringify(data));
+    const ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = () => {
+      if (ajax.readyState === 4 && ajax.status === 200) {
+        // const msg = ajax.responseText;
+        callback();
+      }
+    };
+    ajax.open("get", resUrl);
+    // ajax.setRequestHeader('content-type', 'application/json');
+    ajax.withCredentials = true;
+
+    ajax.send(JSON.stringify(data));
+  } catch (err) {
+    console.log("track off");
+  }
 };
 
 export default request;

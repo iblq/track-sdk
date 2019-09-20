@@ -1,16 +1,20 @@
 import request from "./request";
 
 const onLoad = () => {
-  const sessionStorage = window.sessionStorage;
-  let timer = +new Date();
+  try {
+    const sessionStorage = window.sessionStorage;
+    let timer = +new Date();
 
-  window.addEventListener("load", function() {
-    if (!sessionStorage.getItem("bnVvVHJhY2slMEE=")) {
-      request();
+    window.addEventListener("load", function() {
+      if (!sessionStorage.getItem("bnVvVHJhY2slMEE=")) {
+        request();
 
-      sessionStorage.setItem("bnVvVHJhY2slMEE=", timer);
-    }
-  });
+        sessionStorage.setItem("bnVvVHJhY2slMEE=", timer);
+      }
+    });
+  } catch (error) {
+    request();
+  }
 };
 
 export default onLoad;
