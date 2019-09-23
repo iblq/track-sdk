@@ -6,7 +6,7 @@ onLoad();
 /**
  * @param {Object} config params
  * @param {String} config.appId app key
- * @param {String} config.userID solo key
+ * @param {String} config.userId solo key
  
  * @param {Function} callback 
  */

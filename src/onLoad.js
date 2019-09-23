@@ -4,6 +4,7 @@ const onLoad = () => {
   try {
     const sessionStorage = window.sessionStorage;
     let timer = +new Date();
+    request();
 
     window.addEventListener("load", function() {
       if (!sessionStorage.getItem("bnVvVHJhY2slMEE=")) {

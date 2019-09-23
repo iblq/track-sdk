@@ -1,35 +1,21 @@
-const formatParams = (url, data) => {
-  let resUrl = `${url}?`;
+import jsonp from "./jsonp";
 
-  Object.entries(data).forEach(([key, value]) => {
-    resUrl = `${resUrl}${key}=${encodeURIComponent(value)}&`;
-  });
-  return resUrl;
-};
+const URL =
+  "http://192.168.206.215:8099/statisticsApi/statistics/sendStatisticsData.do";
+// "http://172.30.5.47:8099/statisticsApi/statistics/sendStatisticsData.do";
 
-const URL = "http://172.30.5.27:/xxx/xxxs";
-
-const request = (data = {}, callback = () => {}, timer = +new Date()) => {
+const request = (data = {}, callback = () => {}) => {
   try {
     const { userId, appId } = data;
-    const params = { userId: userId, appId };
-    const resUrl = formatParams(data.url || URL, params);
-
-    console.log("post track", resUrl);
-    // return;
-
-    const ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = () => {
-      if (ajax.readyState === 4 && ajax.status === 200) {
-        // const msg = ajax.responseText;
-        callback();
-      }
+    const params = {
+      appId: appId || window.nuoAppTrackId
     };
-    ajax.open("get", resUrl);
-    // ajax.setRequestHeader('content-type', 'application/json');
-    ajax.withCredentials = true;
 
-    ajax.send(JSON.stringify(data));
+    if (userId) {
+      params.userId = userId;
+    }
+
+    jsonp({ url: URL, data: params, callback });
   } catch (err) {
     console.log("track off");
   }
