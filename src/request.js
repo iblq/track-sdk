@@ -1,8 +1,7 @@
 import jsonp from "./jsonp";
 
-const URL =
-  // "//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do";
-  "http://192.168.206.215:8099/statisticsApi/statistics/sendStatisticsData.do";
+const URL = "//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do";
+// "http://192.168.206.215:8099/statisticsApi/statistics/sendStatisticsData.do";
 // "http://172.30.5.47:8099/statisticsApi/statistics/sendStatisticsData.do";
 
 const request = (data = {}, callback = () => {}) => {
@@ -18,7 +17,7 @@ const request = (data = {}, callback = () => {}) => {
       const sessionStorage = window.sessionStorage;
       let timer = +new Date();
 
-      const sessionKey = userId;
+      const sessionKey = params.appId + userId;
       if (!sessionStorage.getItem(sessionKey)) {
         jsonp({ url: URL, data: params, callback });
         sessionStorage.setItem(sessionKey, timer);
@@ -27,7 +26,7 @@ const request = (data = {}, callback = () => {}) => {
       jsonp({ url: URL, data: params, callback });
     }
   } catch (err) {
-    console.log("track off");
+    console.log("track error");
   }
 };
 
