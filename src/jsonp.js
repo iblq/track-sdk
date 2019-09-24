@@ -31,21 +31,15 @@ const jsonp = (config = {}) => {
     callback: name
   });
 
-  // 插入Script标签
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src = srcUrl;
   script.id = name;
 
-  // CallBack 放到 window 对象，调用后销毁
   window[name] = json => {
-    // 执行这个函数后，要销毁这个函数
     window[name] = undefined;
-    // 获取这个script的元素
     const elem = document.getElementById(name);
-    // 删除head里面插入的script，这三步都是为了不影响污染整个DOM啊
     removeElem(elem);
-    // 执行传入的的函数
     callback && typeof callback === "function" && callback(json || "success");
   };
 
