@@ -4,13 +4,16 @@ const onLoad = () => {
   try {
     const sessionStorage = window.sessionStorage;
     let timer = +new Date();
-    request();
+
+    const { pathname } = location || {};
+
+    const sessionKey = (pathname || "") + "bnVvVHJhY2slMEE=";
 
     window.addEventListener("load", function() {
-      if (!sessionStorage.getItem("bnVvVHJhY2slMEE=")) {
+      if (!sessionStorage.getItem(sessionKey)) {
         request();
 
-        sessionStorage.setItem("bnVvVHJhY2slMEE=", timer);
+        sessionStorage.setItem(sessionKey, timer);
       }
     });
   } catch (error) {

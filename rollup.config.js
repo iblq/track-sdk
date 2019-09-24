@@ -4,7 +4,7 @@ import babel from "rollup-plugin-babel";
 export default {
   input: "index.js",
   output: {
-    file: "./dist/nuoUVTrack.min.js",
+    file: "./dist/nuoUVTrack.test.min.js",
     format: "umd",
     name: "nuoUVTrack"
   },
