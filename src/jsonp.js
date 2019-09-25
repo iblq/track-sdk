@@ -21,6 +21,7 @@ const removeElem = elem => {
 
 const jsonp = (config = {}) => {
   const { data, url, callback } = config;
+
   // 拼接请求Url
   let name = `id_${new Date().getTime()}_${Math.random()
     .toString()

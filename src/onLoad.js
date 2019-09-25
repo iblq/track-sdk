@@ -2,19 +2,18 @@ import request from "./request";
 
 const onLoad = () => {
   try {
-    const sessionStorage = window.sessionStorage;
-    let timer = +new Date();
+    // const sessionStorage = window.sessionStorage;
+    // const code = Math.round(Math.random() * 10000);
 
-    const { pathname } = location || {};
-
-    const sessionKey = (pathname || "") + "bnVvVHJhY2slMEE=";
+    // const sessionKey = `${window.nuoAppTrackId}_id`;
+    // const track_session_id = getSessionId();
 
     window.addEventListener("load", function() {
-      if (!sessionStorage.getItem(sessionKey)) {
-        request();
+      // if (!sessionStorage.getItem(sessionKey)) {
+      //   sessionStorage.setItem(sessionKey, track_session_id);
 
-        sessionStorage.setItem(sessionKey, timer);
-      }
+      request();
+      // }
     });
   } catch (error) {
     request();
