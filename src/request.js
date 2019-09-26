@@ -26,9 +26,8 @@ const getSessionId = () => {
   return window.track_session_id;
 };
 
-const URL =
-  // "//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do";
-  "//uvstest.nntest.cn/statisticsApi/statistics/sendStatisticsData.do";
+const URL = "//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do";
+// "//uvstest.nntest.cn/statisticsApi/statistics/sendStatisticsData.do";
 // "http://192.168.206.215:8099/statisticsApi/statistics/sendStatisticsData.do";
 // "http://172.30.5.47:8099/statisticsApi/statistics/sendStatisticsData.do";
 
