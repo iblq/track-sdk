@@ -8,15 +8,21 @@
     <script>
       window.nuoAppTrackId = 'dev-test';
     </script>
-    <script src="../dist/nuoUVTrack.min.js"></script>
+    <script src="./dist/nuoUVTrack.min.js"></script>
   </head>
   <body>
-    test
-    <button onclick="onPost()">click</button>
+    <h3>test</h3>
+    <p><button onclick="clearSession()">clear sessionStorage</button></p>
+    <button onclick="onPost()">click to post</button>
   </body>
   <script>
+    function clearSession() {
+      console.log('clear...');
+      sessionStorage.clear();
+    }
+
     function onPost() {
-      console.log(1);
+      console.log('start post');
       nuoUVTrack({
         userId: 'blq',
         app_name: 'app_web',
