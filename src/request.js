@@ -1,4 +1,4 @@
-import jsonp from "./jsonp";
+import jsonp from './jsonp';
 // import encrypt from "./encrypt";
 
 const sessionStorage = window.sessionStorage;
@@ -26,18 +26,19 @@ const getSessionId = () => {
   return window.track_session_id;
 };
 
-const URL = "//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do";
+const URL = '//data.jss.com.cn/statisticsApi/statistics/sendStatisticsData.do';
 // "//uvstest.nntest.cn/statisticsApi/statistics/sendStatisticsData.do";
 // "http://192.168.206.215:8099/statisticsApi/statistics/sendStatisticsData.do";
 // "http://172.30.5.47:8099/statisticsApi/statistics/sendStatisticsData.do";
 
 const request = (data = {}, callback = () => {}) => {
   try {
-    const { userId, appId } = data;
+    const { userId, appId, ...rest } = data;
     const sessionKey = getSessionKey();
 
     const params = {
-      appId: appId || window.nuoAppTrackId
+      appId: appId || window.nuoAppTrackId,
+      ...rest
     };
 
     if (userId) {
@@ -64,7 +65,7 @@ const request = (data = {}, callback = () => {}) => {
       }
     }
   } catch (err) {
-    console.log("track error");
+    console.log('track error');
   }
 };
 

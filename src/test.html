@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script>
+      window.nuoAppTrackId = 'dev-test';
+    </script>
+    <script src="../dist/nuoUVTrack.min.js"></script>
+  </head>
+  <body>
+    test
+    <button onclick="onPost()">click</button>
+  </body>
+  <script>
+    function onPost() {
+      console.log(1);
+      nuoUVTrack({
+        userId: 'blq',
+        app_name: 'app_web',
+        action: 'view',
+        function: 'page_1'
+      });
+    }
+  </script>
+</html>
